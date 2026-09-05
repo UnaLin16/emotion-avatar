@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>情緒感知3D角色</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="title">情緒感知 3D 角色</div>
+
+    <div id="input-area">
+      <input type="text" id="userInput" placeholder="輸入一句話，例如：今天考試考差了" />
+      <button id="sendBtn">送出</button>
+    </div>
+
+    <div id="status"></div>
+
+    <div id="buttons">
+      <button onclick="setEmotion('開心')">😊 開心</button>
+      <button onclick="setEmotion('難過')">😢 難過</button>
+      <button onclick="setEmotion('生氣')">😠 生氣</button>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
