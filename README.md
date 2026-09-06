@@ -38,9 +38,7 @@ Three.js morph-target expression switching.
 ```
 
 這個 Demo 做的就是這件事。它刻意把每一層都做到最薄 —— 只有三種情緒、只有三組
-morph target、沒有語音、沒有 VR —— 但**三層是真的接起來的**，不是示意圖。
-
-換句話說：這不是一個玩具，是一個概念的最小驗證。
+morph target、沒有語音、沒有 VR —— 但**三層是真的接起來的**, 是一個概念的最小驗證。
 
 ---
 
@@ -49,7 +47,6 @@ morph target、沒有語音、沒有 VR —— 但**三層是真的接起來的*
 | | 網址 |
 |---|---|
 | 前端 | https://emotion-avatar.vercel.app |
-| 後端 API | https://emotion-avatar-backend.onrender.com |
 | API 測試頁 | https://emotion-avatar-backend.onrender.com/docs |
 
 ### 操作方式
@@ -112,9 +109,8 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))   # ✅ 程式碼裡�
 前端程式碼是公開可見的 —— 任何人按 F12 都能讀到。金鑰寫在前端，等於把鑰匙印在
 玻璃門上。後端存在的唯一理由，就是**把金鑰藏在使用者看不到的地方**，前端只傳文字。
 
-> 比喻：程式碼寫的是「去保險箱拿鑰匙」，不是把鑰匙印在紙上。
 
-這個限制不是工程細節，它有研究上的意義 —— 見〈五、已知限制〉。
+
 
 ### 4.2 為什麼是 RobotExpressive，不是 Ready Player Me
 
@@ -279,7 +275,7 @@ emotion-avatar-backend/        後端
 
 ---
 
-## 九、開發歷程
+## 九、學習路徑
 
 本專案為 28 天學習計畫的產出：
 
@@ -293,5 +289,3 @@ Day 27–28   文件整理與 Demo 影片
 
 ---
 
-**作者**：UnaLin（[@UnaLin16](https://github.com/UnaLin16)）
-**用途**：國立政治大學資訊科學系碩士在職專班申請作品
