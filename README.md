@@ -6,10 +6,8 @@ A web prototype in which a user's natural-language input is classified into an e
 state by a large language model, and a 3D character reflects that state in real time
 through morph-target facial expressions.
 
-Built as a minimal, end-to-end validation of a graduate research proposal on
-emotion-driven AI avatars in immersive environments. Text input → LLM emotion
-classification (via a FastAPI backend that keeps the API key server-side) →
-Three.js morph-target expression switching.
+Built as the first-stage implementation of a graduate research proposal on
+multimodal emotion-aware AI avatars in immersive VR environments.
 
 **Live demo** → https://emotion-avatar.vercel.app
 
@@ -18,27 +16,37 @@ Three.js morph-target expression switching.
 
 ---
 
+
+
 ## 一、專案動機
 
-這個 Demo 是研究計畫「**基於情緒感知的元宇宙 AI 虛擬角色互動系統**」的最小可行驗證。
+這個 Demo 是研究計畫《多模態情緒感知之元宇宙 AI 虛擬角色沉浸式互動系統
+設計與實驗研究》的第一階段實作。
 
+研究計畫關心的核心問題是：**在元宇宙沉浸式環境中，當 AI 虛擬角色能夠感知
+並回應使用者的情緒狀態時，使用者的互動體驗會產生什麼差異？**
 
+完整研究採用 2×2 受試者間設計，比較兩個因子：
 
-研究計畫關心的核心問題是：**當虛擬角色能夠感知並回應使用者的情緒狀態時，
-使用者的互動體驗會產生什麼差異？**
+|  | 無情緒感知 | 有情緒感知 |
+|---|---|---|
+| **Web 瀏覽器** | A 組（基準） | **B 組 ← 本 Demo 的位置** |
+| **VR 頭戴設備** | C 組 | D 組（完整實驗組） |
 
-要回答這個問題，必須先證明這條路徑技術上走得通：
-
+**這個 Demo 實作的是 B 組的核心路徑**：
 ```
 使用者的自然語言
-        ↓
+↓
 語言模型判讀情緒狀態
-        ↓
+↓
 具身化的角色即時反映
 ```
 
-這個 Demo 做的就是這件事。它刻意把每一層都做到最薄 —— 只有三種情緒、只有三組
-morph target、沒有語音、沒有 VR —— 但**三層是真的接起來的**, 是一個概念的最小驗證。
+它刻意做到最薄 —— 只有三種情緒、只有三組 morph target、只有文字單一模態、
+沒有 VR —— 但**三層是真的接起來的**。
+
+距離完整研究還缺兩件事：**眼動作為第二模態**，以及**移植到 WebXR 頭戴設備**。
+這兩項正是研究計畫的創新點所在。
 
 ---
 
@@ -48,6 +56,8 @@ morph target、沒有語音、沒有 VR —— 但**三層是真的接起來的*
 |---|---|
 | 前端 | https://emotion-avatar.vercel.app |
 | API 測試頁 | https://emotion-avatar-backend.onrender.com/docs |
+| **後端原始碼** | https://github.com/UnaLin16/emotion-avatar-backend |
+> 前端原始碼即本 repo。
 
 ### 操作方式
 
@@ -65,7 +75,7 @@ morph target、沒有語音、沒有 VR —— 但**三層是真的接起來的*
 | 終於放假了太開心 | 開心 |
 | 同事又搶我的功勞 | 生氣 |
 
-<!-- TODO: 放一張操作截圖或 GIF，放在這裡。教授在讀完動機之後最想看到的就是「長什麼樣子」。 -->
+![Demo 操作畫面](./screenshot.png)
 
 ---
 
@@ -91,6 +101,7 @@ OpenAI API（gpt-4o-mini）
 | 後端 | FastAPI + uvicorn | 保管 API 金鑰、呼叫 LLM、回傳情緒標籤 |
 | 模型 | OpenAI gpt-4o-mini | 自然語言 → 三分類情緒標籤 |
 
+
 ---
 
 ## 四、技術決策說明
@@ -108,7 +119,6 @@ client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))   # ✅ 程式碼裡�
 
 前端程式碼是公開可見的 —— 任何人按 F12 都能讀到。金鑰寫在前端，等於把鑰匙印在
 玻璃門上。後端存在的唯一理由，就是**把金鑰藏在使用者看不到的地方**，前端只傳文字。
-
 
 
 
@@ -188,7 +198,7 @@ const emotionMap = {
 ### 5.4 尚未驗證使用者體驗
 
 這個 Demo 只證明了技術路徑可行，**沒有做任何使用者實驗**。研究計畫中的
-「有情緒反應 vs 無情緒反應」對照實驗尚未進行。
+2×2 實驗設計（60 位受試者、四個組別）尚未執行。
 
 ---
 
@@ -287,5 +297,4 @@ Day 26      部署上線（Render + Vercel）
 Day 27–28   文件整理與 Demo 影片
 ```
 
----
 
